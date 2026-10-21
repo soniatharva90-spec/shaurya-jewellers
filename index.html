@@ -1,0 +1,614 @@
+<title>Shaurya Jewellers</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Hanken+Grotesk:wght@400..700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout: slim sticky nav, split hero (extruded italic words beside a drag-to-turn 3D gold ring), marquee band of 3D words, arch-shaped tilt cards, invoice-style gold estimator, 4-step craft sequence, purity bars, visit band. */
+:root{
+  --bg:#07150f; --surface:#0d2119; --surface2:#143025;
+  --fg:#f4ecd8; --muted:#aab5a6; --line:rgba(233,185,73,.26);
+  --gold:#e9b949; --gold-text:#f0c868; --on-gold:#07150f;
+  --btn-bg:#e9b949; --btn-fg:#07150f; --glow:rgba(233,185,73,.22);
+  --face:#ffd978; --ext-a:#d99a1f; --ext-b:#4a2e05; --ground:rgba(0,0,0,.5);
+  --display:'Bodoni Moda',Didot,'Times New Roman',serif;
+  --body:'Hanken Grotesk',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --mono:'DM Mono',ui-monospace,Menlo,monospace;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){
+    --bg:#eef2ec; --surface:#e1e8df; --surface2:#d6dfd2;
+    --fg:#0c2a1f; --muted:#465c50; --line:rgba(12,42,31,.2);
+    --gold:#8f6000; --gold-text:#7a5200; --on-gold:#fff8e6;
+    --btn-bg:#0c2a1f; --btn-fg:#f4ecd8; --glow:rgba(168,116,8,.2);
+    --face:#e0a920; --ext-a:#a8730a; --ext-b:#3b2606; --ground:rgba(12,42,31,.35);
+    color-scheme:light;
+  }
+}
+:root[data-theme="light"]{
+  --bg:#eef2ec; --surface:#e1e8df; --surface2:#d6dfd2;
+  --fg:#0c2a1f; --muted:#465c50; --line:rgba(12,42,31,.2);
+  --gold:#8f6000; --gold-text:#7a5200; --on-gold:#fff8e6;
+  --btn-bg:#0c2a1f; --btn-fg:#f4ecd8; --glow:rgba(168,116,8,.2);
+  --face:#e0a920; --ext-a:#a8730a; --ext-b:#3b2606; --ground:rgba(12,42,31,.35);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:72px}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:1rem;line-height:1.6;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--bg)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.wrap{width:100%;max-width:1180px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* nav */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 86%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:600 1.25rem/1 var(--display);letter-spacing:.01em;white-space:nowrap}
+.brand svg{width:22px;height:22px;flex:none}
+.nav{display:flex;align-items:center;gap:clamp(14px,2.4vw,30px);font:500 .8rem/1 var(--mono);letter-spacing:.08em;text-transform:uppercase}
+.nav a{text-decoration:none;color:var(--muted);padding:6px 0}
+.nav a:hover{color:var(--gold-text)}
+.nav .cta{color:var(--btn-fg);background:var(--btn-bg);padding:10px 14px}
+.nav .cta:hover{color:var(--btn-fg);filter:brightness(1.08)}
+@media (max-width:760px){.nav a:not(.cta){display:none}}
+
+/* 3D words */
+.w3d{--dx:.011em;--dy:.015em;font-family:var(--display);font-weight:900;font-style:italic;color:var(--face);line-height:.95;letter-spacing:-.015em;
+  text-shadow:
+   calc(var(--dx)*1) calc(var(--dy)*1) 0 color-mix(in srgb,var(--ext-a),var(--ext-b) 6%),
+   calc(var(--dx)*2) calc(var(--dy)*2) 0 color-mix(in srgb,var(--ext-a),var(--ext-b) 16%),
+   calc(var(--dx)*3) calc(var(--dy)*3) 0 color-mix(in srgb,var(--ext-a),var(--ext-b) 26%),
+   calc(var(--dx)*4) calc(var(--dy)*4) 0 color-mix(in srgb,var(--ext-a),var(--ext-b) 36%),
+   calc(var(--dx)*5) calc(var(--dy)*5) 0 color-mix(in srgb,var(--ext-a),var(--ext-b) 46%),
+   calc(var(--dx)*6) calc(var(--dy)*6) 0 color-mix(in srgb,var(--ext-a),var(--ext-b) 58%),
+   calc(var(--dx)*7) calc(var(--dy)*7) 0 color-mix(in srgb,var(--ext-a),var(--ext-b) 70%),
+   calc(var(--dx)*8) calc(var(--dy)*8) 0 color-mix(in srgb,var(--ext-a),var(--ext-b) 84%),
+   0 calc(var(--dy)*14) calc(var(--dy)*10) var(--ground)}
+
+/* hero */
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:clamp(12px,4vw,56px);align-items:center;padding-block:clamp(28px,5vw,64px)}
+@media (max-width:860px){.hero .wrap{grid-template-columns:minmax(0,1fr)}}
+.kicker{font:500 .78rem/1.3 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--gold-text)}
+.words{perspective:900px;margin:clamp(14px,3vw,26px) 0 clamp(16px,3vw,26px)}
+.words-in{display:grid;transform-style:preserve-3d;transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .18s ease-out;will-change:transform}
+.words .w3d{font-size:clamp(3.6rem,11.5vw,8rem);padding-bottom:.04em}
+.words .w3d:nth-child(2){padding-left:.55em}
+.words .w3d:nth-child(3){padding-left:.15em}
+.lede{max-width:46ch;color:var(--muted);font-size:1.08rem}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.btn{display:inline-block;text-decoration:none;font:500 .85rem/1 var(--mono);letter-spacing:.09em;text-transform:uppercase;padding:16px 22px;border:1px solid var(--btn-bg);background:var(--btn-bg);color:var(--btn-fg)}
+.btn:hover{filter:brightness(1.1)}
+.btn.ghost{background:transparent;color:var(--fg);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--gold);color:var(--gold-text);filter:none}
+.chips{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:26px;padding:0;list-style:none;font:400 .78rem/1.3 var(--mono);letter-spacing:.06em;color:var(--muted)}
+.chips li{display:flex;align-items:center;gap:8px}
+.chips li::before{content:"";width:7px;height:7px;background:var(--gold);transform:rotate(45deg)}
+
+.stage{position:relative;width:100%;max-width:560px;margin-inline:auto;aspect-ratio:1/1;background:radial-gradient(circle at 50% 46%,var(--glow),transparent 66%)}
+.stage::before,.stage::after{content:"";position:absolute;border:1px solid var(--line);border-radius:50%;pointer-events:none}
+.stage::before{inset:6%}
+.stage::after{inset:20%;border-style:dashed}
+.stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:pan-y;cursor:grab}
+.stage canvas:active{cursor:grabbing}
+.stage .cap{position:absolute;left:0;right:0;bottom:2%;text-align:center;font:400 .74rem/1.3 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);pointer-events:none}
+.fb{position:absolute;inset:22%;border-radius:50%;background:conic-gradient(from 20deg,#ffe9a8,#e2a92f,#8a5a0a,#ffd978,#e2a92f,#ffe9a8);-webkit-mask:radial-gradient(circle,transparent 52%,#000 54%);mask:radial-gradient(circle,transparent 52%,#000 54%)}
+
+/* marquee */
+.band{border-block:1px solid var(--line);background:var(--surface);overflow:hidden;padding-block:clamp(16px,3vw,26px)}
+.track{display:flex;width:max-content;animation:slide 40s linear infinite}
+.set{display:flex;align-items:center;gap:clamp(24px,4vw,56px);padding-right:clamp(24px,4vw,56px)}
+.set .w3d{font-size:clamp(2.2rem,6vw,3.8rem);white-space:nowrap;--dx:.009em;--dy:.012em}
+.set i{width:.9rem;height:.9rem;background:var(--gold);transform:rotate(45deg);flex:none}
+@keyframes slide{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){
+  .track{animation:none;width:auto;flex-wrap:wrap}
+  .set:nth-child(2){display:none}
+  .set{flex-wrap:wrap}
+}
+
+/* sections */
+.sec{padding-block:clamp(52px,8vw,100px)}
+.eyebrow{font:500 .78rem/1.3 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--gold-text)}
+h2{margin:10px 0 0;font:600 clamp(2rem,5vw,3.3rem)/1.05 var(--display);letter-spacing:-.01em;text-wrap:balance}
+.sub{max-width:56ch;color:var(--muted);margin:14px 0 0}
+
+/* collections */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:18px;margin-top:36px}
+.tilt{position:relative;min-width:0;display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;padding:clamp(34px,6vw,44px) 20px 26px;border:1px solid var(--line);border-radius:999px 999px 10px 10px;background:linear-gradient(170deg,var(--surface2),var(--surface));transform:perspective(800px) rotateX(var(--tx,0deg)) rotateY(var(--ty,0deg));transform-style:preserve-3d;transition:transform .2s ease-out;overflow:hidden}
+.tilt::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at var(--mx,50%) var(--my,25%),color-mix(in srgb,var(--gold) 24%,transparent),transparent 55%);opacity:var(--sh,0);transition:opacity .25s}
+.tilt svg{width:min(150px,60%);height:auto;transform:translateZ(46px);filter:drop-shadow(0 12px 14px var(--ground))}
+.tilt h3{margin:10px 0 0;font:600 1.5rem/1.1 var(--display);transform:translateZ(24px)}
+.tilt p{margin:0;color:var(--muted);font-size:.95rem;max-width:26ch}
+.tilt .tag{margin-top:6px;font:500 .74rem/1.3 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--gold-text)}
+
+/* estimator */
+.panel{margin-top:34px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);border:1px solid var(--line);background:var(--surface)}
+@media (max-width:820px){.panel{grid-template-columns:minmax(0,1fr)}}
+.panel>div{padding:clamp(20px,4vw,36px);min-width:0}
+.form{display:grid;gap:20px;align-content:start}
+.form fieldset{border:0;margin:0;padding:0;min-width:0}
+.form legend,.form label.l{display:block;padding:0;margin-bottom:8px;font:500 .76rem/1.3 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.seg{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;position:relative}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg label{display:block;text-align:center;padding:11px 0;border:1px solid var(--line);background:var(--bg);font:500 .95rem/1 var(--mono);cursor:pointer}
+.seg input:checked+label{background:var(--gold);color:var(--on-gold);border-color:var(--gold)}
+.seg input:focus-visible+label{outline:2px solid var(--gold);outline-offset:2px}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.form input[type=number]{width:100%;padding:12px 14px;background:var(--bg);color:var(--fg);border:1px solid var(--line);font:500 1.05rem/1.2 var(--mono);border-radius:0}
+.hint{margin:0;font-size:.86rem;color:var(--muted)}
+.bill{background:var(--bg);border-left:1px solid var(--line);display:flex;flex-direction:column;gap:12px}
+@media (max-width:820px){.bill{border-left:0;border-top:1px solid var(--line)}}
+.row{display:flex;align-items:baseline;gap:10px;font:400 .95rem/1.4 var(--mono)}
+.row::after{content:"";order:1;flex:1;border-bottom:1px dotted var(--line);transform:translateY(-4px)}
+.row span:first-child{order:0;color:var(--muted)}
+.row b{order:2;font-weight:500;font-variant-numeric:tabular-nums}
+.total{margin-top:auto;padding-top:18px;border-top:1px solid var(--line)}
+.total small{display:block;font:500 .76rem/1.3 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.total output{display:block;font:700 clamp(2.4rem,7vw,3.6rem)/1.1 var(--display);color:var(--gold-text);font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.fine{margin:0;font-size:.8rem;color:var(--muted)}
+
+/* craft */
+.steps{list-style:none;margin:36px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:26px;counter-reset:s}
+.steps li{counter-increment:s;border-top:2px solid var(--gold);padding-top:16px;min-width:0}
+.steps li::before{content:"Step " counter(s);font:500 .76rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--gold-text)}
+.steps h3{margin:10px 0 8px;font:600 1.45rem/1.1 var(--display)}
+.steps p{margin:0;color:var(--muted);font-size:.97rem}
+
+/* purity */
+.purity{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(24px,5vw,64px);align-items:start}
+@media (max-width:860px){.purity{grid-template-columns:minmax(0,1fr)}}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:480px;font-size:.95rem}
+th{font:500 .74rem/1.3 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-align:left;padding:0 12px 12px 0}
+td{padding:14px 12px 14px 0;border-top:1px solid var(--line);vertical-align:middle}
+td.k{font:700 1.5rem/1 var(--display);color:var(--gold-text)}
+td.m{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.bar{display:block;width:100%;min-width:90px;height:8px;background:var(--surface2)}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,#b9780f,#ffd978)}
+.note{margin-top:20px;padding:16px 18px;border:1px solid var(--line);background:var(--surface);font-size:.95rem}
+.note b{font-family:var(--mono);font-weight:500;color:var(--gold-text)}
+
+/* visit */
+.visit{background:var(--surface);border-block:1px solid var(--line)}
+.visit .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,64px);padding-block:clamp(48px,8vw,90px)}
+@media (max-width:760px){.visit .wrap{grid-template-columns:minmax(0,1fr)}}
+dl{margin:0;display:grid;gap:18px}
+dt{font:500 .76rem/1.3 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--gold-text)}
+dd{margin:4px 0 0;font-size:1.05rem}
+/* info bar, rate board, mobile call bar */
+.info{background:var(--surface);border-bottom:1px solid var(--line);font:400 .78rem/1.3 var(--mono);letter-spacing:.06em;color:var(--muted)}
+.info .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 24px;padding-block:8px}
+.info a{color:var(--gold-text);text-decoration:none}
+.rates-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px 24px}
+.stamp{font:500 .76rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--gold-text);border:1px solid var(--line);padding:9px 12px}
+.rates{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:28px}
+@media (max-width:640px){.rates{grid-template-columns:minmax(0,1fr)}}
+.rate{display:grid;grid-template-columns:auto 1fr;align-items:baseline;column-gap:14px;padding:22px 22px 20px;border:1px solid var(--line);background:var(--surface);min-width:0}
+.rate.main{border-color:var(--gold);background:linear-gradient(170deg,var(--surface2),var(--surface))}
+.rk{grid-row:1/3;font:700 2.2rem/1 var(--display);color:var(--gold-text)}
+.rp{font:700 clamp(1.8rem,4vw,2.3rem)/1.1 var(--display);font-variant-numeric:tabular-nums}
+.rg{font:500 .74rem/1.3 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.rt{grid-column:1/3;margin-top:12px;padding-top:12px;border-top:1px solid var(--line);font:400 .9rem/1.3 var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.rnote{margin-top:16px;max-width:70ch}
+.rnote a{color:var(--gold-text)}
+.phone{font:600 1.6rem/1.2 var(--display);font-variant-numeric:tabular-nums}
+.owner{margin-top:24px;padding:20px 22px;border:1px dashed var(--gold);background:var(--surface)}
+.owner h3{margin:6px 0 16px;font:600 1.4rem/1.1 var(--display)}
+.oform{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:14px;align-items:end}
+.owner label.l{display:block;margin-bottom:8px;font:500 .76rem/1.3 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.owner input[type=number]{width:100%;padding:12px 14px;background:var(--bg);color:var(--fg);border:1px solid var(--line);font:500 1.05rem/1.2 var(--mono);border-radius:0}
+.owner .btn{cursor:pointer}
+.callbar{display:none}
+@media (max-width:760px){
+  .callbar{position:fixed;left:0;right:0;bottom:0;z-index:25;display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--surface);border-top:1px solid var(--line);padding:10px max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));font:500 .78rem/1.3 var(--mono);letter-spacing:.04em}
+  .callbar .btn{padding:12px 22px}
+  footer{padding-bottom:calc(64px + env(safe-area-inset-bottom,0px))}
+}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 32px;padding-block:28px;color:var(--muted);font-size:.85rem}
+footer p{margin:0;max-width:62ch}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<linearGradient id="gg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffe9a8"/><stop offset=".45" stop-color="#e2a92f"/><stop offset=".72" stop-color="#b9780f"/><stop offset="1" stop-color="#ffd978"/></linearGradient>
+<radialGradient id="gr" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#ff7a8f"/><stop offset=".6" stop-color="#b3122c"/><stop offset="1" stop-color="#6d0618"/></radialGradient>
+</defs></svg>
+
+<div class="info">
+  <div class="wrap">
+    <span>Sarafa Line, Chandrapur · Mon to Sat, 11:00 am to 8:00 pm</span>
+    <span>Call <a href="tel:+917620748973">+91 76207 48973</a></span>
+  </div>
+</div>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" id="top"><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12,2 21,9 12,22 3,9" fill="url(#gg)"/><polygon points="12,2 16,9 12,22 8,9" fill="#fff" fill-opacity=".22"/></svg>Shaurya Jewellers</a>
+    <nav class="nav" aria-label="Main">
+      <a href="#collections">Collections</a><a href="#rates">Gold rate</a><a href="#estimate">Estimate</a><a href="#craft">Craft</a>
+      <a class="cta" href="#visit">Visit</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="hero">
+  <div class="wrap">
+    <div>
+      <div class="kicker">Shaurya Jewellers · Sarafa Line, Chandrapur</div>
+      <div class="words" aria-label="Pure. Gold. Yours.">
+        <div class="words-in" aria-hidden="true">
+          <span class="w3d">Pure.</span><span class="w3d">Gold.</span><span class="w3d">Yours.</span>
+        </div>
+      </div>
+      <p class="lede">Gold jewellery from the Sarafa Line in Chandrapur: rings, bangles, chains and bridal sets in 22K and 18K gold. Every piece carries a BIS hallmark with a HUID code, so you can check the purity yourself.</p>
+      <div class="actions">
+        <a class="btn" href="#collections">See collections</a>
+        <a class="btn ghost" href="#estimate">Estimate your gold</a>
+      </div>
+      <ul class="chips">
+        <li>BIS hallmark + HUID</li><li>22K · 18K · 14K</li><li>Bridal and custom orders</li>
+      </ul>
+    </div>
+    <div class="stage" id="stage">
+      <div class="fb" id="fallback" aria-hidden="true"></div>
+      <div class="cap">Drag to turn · 22K gold, ruby</div>
+    </div>
+  </div>
+</section>
+
+<div class="band" aria-hidden="true">
+  <div class="track">
+    <div class="set"><span class="w3d">Rings</span><i></i><span class="w3d">Bangles</span><i></i><span class="w3d">Chains</span><i></i><span class="w3d">Bridal</span><i></i><span class="w3d">Coins</span><i></i><span class="w3d">Jhumkas</span><i></i></div>
+    <div class="set"><span class="w3d">Rings</span><i></i><span class="w3d">Bangles</span><i></i><span class="w3d">Chains</span><i></i><span class="w3d">Bridal</span><i></i><span class="w3d">Coins</span><i></i><span class="w3d">Jhumkas</span><i></i></div>
+  </div>
+</div>
+
+<section class="sec wrap" id="rates">
+  <div class="rates-head">
+    <div>
+      <div class="eyebrow">Gold rate · Chandrapur</div>
+      <h2>Today's gold rate</h2>
+    </div>
+    <span class="stamp">Rate on 21 Oct 2026</span>
+  </div>
+  <div class="rates">
+    <div class="rate"><span class="rk">24K</span><span class="rp">₹14,608</span><span class="rg">per gram</span><span class="rt">₹1,46,080 per 10 g</span></div>
+    <div class="rate main"><span class="rk">22K</span><span class="rp">₹13,391</span><span class="rg">per gram</span><span class="rt">₹1,33,910 per 10 g</span></div>
+    <div class="rate"><span class="rk">18K</span><span class="rp">₹10,956</span><span class="rg">per gram</span><span class="rt">₹1,09,560 per 10 g</span></div>
+  </div>
+  <p class="fine rnote" id="rnote">Indicative Chandrapur rates from the public listing at <a href="https://groww.in/gold-rates/gold-rate-today-in-chandrapur">Groww</a>, taken on 21 Oct 2026. Rates change through the day and exclude making charges and GST. Call +91 76207 48973 for the counter rate.</p>
+  <div class="owner" id="owner" hidden>
+    <div class="eyebrow">Owner only</div>
+    <h3>Update today's rate</h3>
+    <div class="oform">
+      <div><label class="l" for="n24">24K, ₹ per gram</label><input type="number" id="n24" min="0" step="1" inputmode="numeric"></div>
+      <div><label class="l" for="n22">22K, ₹ per gram</label><input type="number" id="n22" min="0" step="1" inputmode="numeric"></div>
+      <div><label class="l" for="n18">18K, ₹ per gram</label><input type="number" id="n18" min="0" step="1" inputmode="numeric"></div>
+      <button class="btn" type="button" id="saveRate">Save rate</button>
+    </div>
+    <p class="fine" id="ostatus" role="status">Enter the 24K rate and 22K and 18K fill in. Change them if your counter rate differs.</p>
+  </div>
+</section>
+
+<section class="sec wrap" id="collections">
+  <div class="eyebrow">Collections</div>
+  <h2>Six ways to wear gold</h2>
+  <p class="sub">From a single coin to a full wedding set. Tell us the occasion and the budget and we will show you what fits.</p>
+  <div class="cards">
+    <article class="tilt">
+      <svg viewBox="0 0 120 120" role="img" aria-label="Gold ring with a ruby"><circle cx="60" cy="76" r="30" fill="none" stroke="url(#gg)" stroke-width="10"/><polygon points="60,16 75,31 60,46 45,31" fill="url(#gr)" stroke="url(#gg)" stroke-width="3"/></svg>
+      <h3>Rings</h3><p>Plain bands, solitaire-style and stone-set rings.</p><span class="tag">18K · 22K</span>
+    </article>
+    <article class="tilt">
+      <svg viewBox="0 0 120 120" role="img" aria-label="Stack of gold bangles"><ellipse cx="60" cy="62" rx="44" ry="40" fill="none" stroke="url(#gg)" stroke-width="12"/><ellipse cx="60" cy="62" rx="44" ry="40" fill="none" stroke="#7a4d06" stroke-opacity=".5" stroke-width="2" stroke-dasharray="1 7"/><ellipse cx="60" cy="62" rx="31" ry="27" fill="none" stroke="url(#gg)" stroke-width="7"/></svg>
+      <h3>Bangles</h3><p>Solid and hollow kadas and bangles in sizes 2.2 to 2.10.</p><span class="tag">22K</span>
+    </article>
+    <article class="tilt">
+      <svg viewBox="0 0 120 120" role="img" aria-label="Gold chain"><g id="chainG" fill="none" stroke="url(#gg)" stroke-width="3.4"></g></svg>
+      <h3>Chains</h3><p>Rope, box, Singapore and Figaro, in light and heavy weights.</p><span class="tag">18K · 22K</span>
+    </article>
+    <article class="tilt">
+      <svg viewBox="0 0 120 120" role="img" aria-label="Bridal necklace with ruby pendant"><g id="beadG" fill="url(#gg)"></g><path d="M60 72 C72 86,72 98,60 108 C48 98,48 86,60 72Z" fill="url(#gr)" stroke="url(#gg)" stroke-width="3"/></svg>
+      <h3>Bridal sets</h3><p>Temple, kundan-style and antique-finish sets made to order.</p><span class="tag">22K</span>
+    </article>
+    <article class="tilt">
+      <svg viewBox="0 0 120 120" role="img" aria-label="24 carat gold coin"><circle cx="60" cy="60" r="44" fill="url(#gg)"/><circle cx="60" cy="60" r="35" fill="none" stroke="#7a4d06" stroke-opacity=".55" stroke-width="2" stroke-dasharray="1.5 4"/><text x="60" y="58" text-anchor="middle" font-family="Bodoni Moda,serif" font-weight="800" font-size="26" fill="#6b4306">24K</text><text x="60" y="78" text-anchor="middle" font-family="DM Mono,monospace" font-size="11" fill="#6b4306">999</text></svg>
+      <h3>Coins and bars</h3><p>Hallmarked coins for gifting and saving.</p><span class="tag">24K · 999</span>
+    </article>
+    <article class="tilt">
+      <svg viewBox="0 0 120 120" role="img" aria-label="Gold jhumka earring"><circle cx="60" cy="20" r="8" fill="url(#gg)"/><circle cx="60" cy="20" r="3.4" fill="url(#gr)"/><path d="M34 58 A26 26 0 0 1 86 58Z" fill="url(#gg)"/><path d="M34 58 L86 58 L96 90 Q60 102 24 90Z" fill="url(#gg)"/><path d="M40 74 H80" stroke="#7a4d06" stroke-opacity=".5" stroke-width="2" stroke-dasharray="1 5"/><g fill="url(#gg)"><circle cx="28" cy="100" r="4.2"/><circle cx="44" cy="103" r="4.2"/><circle cx="60" cy="104" r="4.2"/><circle cx="76" cy="103" r="4.2"/><circle cx="92" cy="100" r="4.2"/></g></svg>
+      <h3>Jhumkas and studs</h3><p>Everyday studs, jhumkas and chandbalis.</p><span class="tag">18K · 22K</span>
+    </article>
+  </div>
+</section>
+
+<section class="sec wrap" id="estimate">
+  <div class="eyebrow">Gold estimator</div>
+  <h2>What will it cost today?</h2>
+  <p class="sub">Pick the karat and enter the weight. The 24K rate is filled in with Chandrapur's rate of 21 Oct 2026, and you can change it to the counter rate.</p>
+  <div class="panel">
+    <div class="form">
+      <fieldset>
+        <legend>Karat</legend>
+        <div class="seg">
+          <input type="radio" name="k" id="k24" value="24" data-p="99.9" data-h="999"><label for="k24">24K</label>
+          <input type="radio" name="k" id="k22" value="22" data-p="91.6" data-h="916" checked><label for="k22">22K</label>
+          <input type="radio" name="k" id="k18" value="18" data-p="75" data-h="750"><label for="k18">18K</label>
+          <input type="radio" name="k" id="k14" value="14" data-p="58.5" data-h="585"><label for="k14">14K</label>
+        </div>
+      </fieldset>
+      <div class="two">
+        <div><label class="l" for="wt">Weight (grams)</label><input type="number" id="wt" value="10" min="0" step="0.01" inputmode="decimal"></div>
+        <div><label class="l" for="rate">24K rate (₹ per gram)</label><input type="number" id="rate" value="14608" min="0" step="10" inputmode="numeric"></div>
+      </div>
+      <div class="two">
+        <div><label class="l" for="mk">Making charges (%)</label><input type="number" id="mk" value="8" min="0" max="40" step="0.5" inputmode="decimal"></div>
+        <div><label class="l" for="gst">GST (%)</label><input type="number" id="gst" value="3" min="0" max="28" step="0.5" inputmode="decimal"></div>
+      </div>
+      <p class="hint" id="pureLine">22K is 91.6% pure gold (BIS 916).</p>
+    </div>
+    <div class="bill" aria-live="polite">
+      <div class="row"><span>Rate at this karat, per gram</span><b id="rKarat">₹13,381</b></div>
+      <div class="row"><span>Gold value</span><b id="oGold">₹1,33,809</b></div>
+      <div class="row"><span>Making charges</span><b id="oMake">₹10,705</b></div>
+      <div class="row"><span>GST</span><b id="oGst">₹4,335</b></div>
+      <div class="total"><small>Estimated total</small><output id="oTotal" for="wt rate mk gst k22">₹1,48,849</output></div>
+      <p class="fine">An estimate only. Gold rates move through the day, and your invoice at the showroom is final.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec wrap" id="craft">
+  <div class="eyebrow">Craft</div>
+  <h2>From sketch to hallmark</h2>
+  <ol class="steps">
+    <li><h3>Design</h3><p>Style, size and weight are agreed with you before any gold is melted.</p></li>
+    <li><h3>Casting</h3><p>Gold is alloyed to the karat you chose, cast, then cleaned and shaped.</p></li>
+    <li><h3>Setting and finish</h3><p>Stones are set by hand. The piece is polished, or given a matte or antique finish.</p></li>
+    <li><h3>Hallmarking</h3><p>Purity is tested and the piece is marked at a BIS-recognised centre with its HUID.</p></li>
+  </ol>
+</section>
+
+<section class="sec wrap" id="purity">
+  <div class="purity">
+    <div>
+      <div class="eyebrow">Purity</div>
+      <h2>Know what you are buying</h2>
+      <p class="sub">Karat tells you how much of the piece is gold. Hallmark numbers show the same thing in parts per thousand.</p>
+      <div class="note"><b>HUID</b> Each hallmarked piece has a 6-character HUID. Enter it in the BIS Care app to see its karat and the centre that tested it.</div>
+    </div>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Karat</th><th>Hallmark</th><th>Gold</th><th></th><th>Best for</th></tr></thead>
+        <tbody>
+          <tr><td class="k">24K</td><td class="m">999</td><td class="m">99.9%</td><td><span class="bar"><i style="width:99.9%"></i></span></td><td>Coins and bars</td></tr>
+          <tr><td class="k">22K</td><td class="m">916</td><td class="m">91.6%</td><td><span class="bar"><i style="width:91.6%"></i></span></td><td>Bridal and festive</td></tr>
+          <tr><td class="k">18K</td><td class="m">750</td><td class="m">75.0%</td><td><span class="bar"><i style="width:75%"></i></span></td><td>Stone-set and daily wear</td></tr>
+          <tr><td class="k">14K</td><td class="m">585</td><td class="m">58.5%</td><td><span class="bar"><i style="width:58.5%"></i></span></td><td>Light daily wear</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="visit" id="visit">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Visit</div>
+      <h2>Visit Shaurya Jewellers</h2>
+      <p class="sub">Bring a design you like, or an old piece you would like reworked. We will weigh, test and quote in front of you.</p>
+      <div class="actions"><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Shaurya+Jewellers+Sarafa+Line+Chandrapur">Open in Maps</a></div>
+    </div>
+    <dl>
+      <div><dt>Showroom</dt><dd>Shaurya Jewellers<br>Sarafa Line, Chandrapur</dd></div>
+      <div><dt>Opening hours</dt><dd>Monday to Saturday<br>11:00 am to 8:00 pm</dd></div>
+      <div><dt>Phone</dt><dd class="phone">+91 76207 48973</dd></div>
+    </dl>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Shaurya Jewellers, Sarafa Line, Chandrapur · +91 76207 48973. Gold rates change daily, and figures here are indicative.</p>
+    <p>Check any hallmarked piece in the BIS Care app using its HUID.</p>
+  </div>
+</footer>
+
+<div class="callbar"><span>Shaurya Jewellers · +91 76207 48973</span><a class="btn" href="tel:+917620748973">Call</a></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fine = window.matchMedia && matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  /* generated card art */
+  (function(){
+    var NS='http://www.w3.org/2000/svg', i, el;
+    var c=document.getElementById('chainG');
+    if(c){ for(i=0;i<9;i++){ var t=i/8, x=14+t*92, y=34+Math.sin(t*Math.PI)*46;
+      var ang=Math.atan(Math.cos(t*Math.PI)*46*Math.PI/92)*180/Math.PI;
+      el=document.createElementNS(NS,'ellipse'); el.setAttribute('cx',x.toFixed(1)); el.setAttribute('cy',y.toFixed(1));
+      el.setAttribute('rx','10'); el.setAttribute('ry', i%2?'2.4':'5.6'); el.setAttribute('transform','rotate('+ang.toFixed(1)+' '+x.toFixed(1)+' '+y.toFixed(1)+')');
+      c.appendChild(el);} }
+    var b=document.getElementById('beadG');
+    if(b){ for(i=0;i<15;i++){ var a=(20+i*10)*Math.PI/180;
+      el=document.createElementNS(NS,'circle'); el.setAttribute('cx',(60+48*Math.cos(a)).toFixed(1)); el.setAttribute('cy',(24+48*Math.sin(a)).toFixed(1));
+      el.setAttribute('r', i===7?'5.4':'4'); b.appendChild(el);} }
+  })();
+
+  /* hero word tilt */
+  var hero=document.getElementById('hero'), wi=hero&&hero.querySelector('.words-in');
+  if(hero && wi && fine && !reduce){
+    hero.addEventListener('pointermove',function(e){
+      var r=hero.getBoundingClientRect(), px=(e.clientX-r.left)/r.width-.5, py=(e.clientY-r.top)/r.height-.5;
+      wi.style.setProperty('--ry',(px*14).toFixed(2)+'deg'); wi.style.setProperty('--rx',(-py*10).toFixed(2)+'deg');
+      wi.style.setProperty('--dx',(-px*.03).toFixed(4)+'em'); wi.style.setProperty('--dy',(.015+py*.012).toFixed(4)+'em');
+      wi.querySelectorAll('.w3d').forEach(function(w){ w.style.setProperty('--dx',(.011-px*.02).toFixed(4)+'em'); w.style.setProperty('--dy',(.015+py*.012).toFixed(4)+'em'); });
+    });
+    hero.addEventListener('pointerleave',function(){
+      wi.style.setProperty('--ry','0deg'); wi.style.setProperty('--rx','0deg');
+      wi.querySelectorAll('.w3d').forEach(function(w){ w.style.removeProperty('--dx'); w.style.removeProperty('--dy'); });
+    });
+  }
+
+  /* card tilt */
+  if(fine && !reduce){
+    document.querySelectorAll('.tilt').forEach(function(card){
+      card.addEventListener('pointermove',function(e){
+        var r=card.getBoundingClientRect(), px=(e.clientX-r.left)/r.width, py=(e.clientY-r.top)/r.height;
+        card.style.setProperty('--ty',((px-.5)*14).toFixed(2)+'deg'); card.style.setProperty('--tx',((.5-py)*14).toFixed(2)+'deg');
+        card.style.setProperty('--mx',(px*100).toFixed(1)+'%'); card.style.setProperty('--my',(py*100).toFixed(1)+'%'); card.style.setProperty('--sh','1');
+      });
+      card.addEventListener('pointerleave',function(){ card.style.setProperty('--tx','0deg'); card.style.setProperty('--ty','0deg'); card.style.setProperty('--sh','0'); });
+    });
+  }
+
+  /* estimator */
+  (function(){
+    function $(id){return document.getElementById(id);}
+    function fmt(n){return '₹'+Math.round(n).toLocaleString('en-IN');}
+    function calc(){
+      var k=document.querySelector('input[name=k]:checked'); if(!k) return;
+      var p=parseFloat(k.getAttribute('data-p')), h=k.getAttribute('data-h');
+      var w=Math.max(0,parseFloat($('wt').value)||0), rate=Math.max(0,parseFloat($('rate').value)||0);
+      var mk=Math.max(0,parseFloat($('mk').value)||0), gst=Math.max(0,parseFloat($('gst').value)||0);
+      var gold=w*rate*p/100, make=gold*mk/100, tax=(gold+make)*gst/100;
+      $('rKarat').textContent=fmt(rate*p/100); $('oGold').textContent=fmt(gold); $('oMake').textContent=fmt(make);
+      $('oGst').textContent=fmt(tax); $('oTotal').textContent=fmt(gold+make+tax);
+      $('pureLine').textContent=k.value+'K is '+p+'% pure gold (BIS '+h+').';
+    }
+    ['wt','rate','mk','gst'].forEach(function(id){ $(id).addEventListener('input',calc); });
+    document.querySelectorAll('input[name=k]').forEach(function(r){ r.addEventListener('change',calc); });
+    calc();
+  })();
+
+  /* rate board: values come from rates.json; the owner can save new ones */
+  (function(){
+    function $(id){return document.getElementById(id);}
+    function inr(n){return '₹'+Math.round(n).toLocaleString('en-IN');}
+    var cards=document.querySelectorAll('.rate'), current=null;
+    function apply(d){
+      if(!d||!d.r24) return;
+      current=d;
+      var vals=[d.r24,d.r22,d.r18];
+      cards.forEach(function(c,i){
+        c.querySelector('.rp').textContent=inr(vals[i]);
+        c.querySelector('.rt').textContent=inr(vals[i]*10)+' per 10 g';
+      });
+      var st=document.querySelector('.stamp'); if(st&&d.date) st.textContent='Rate on '+d.date;
+      var n=$('rnote');
+      if(n&&d.source==='owner') n.textContent='Rates set by Shaurya Jewellers on '+d.date+'. They change through the day and exclude making charges and GST. Call +91 76207 48973 for the counter rate.';
+      var r=$('rate'); if(r){ r.value=d.r24; r.dispatchEvent(new Event('input',{bubbles:true})); }
+    }
+    try{
+      fetch('rates.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(apply).catch(function(){});
+    }catch(e){}
+
+    if(!window.claude||!window.claude.use) return;
+    Promise.all([window.claude.use('artifact'),window.claude.use('user')]).then(function(a){
+      var art=a[0], user=a[1]; if(!art||!user) return;
+      return Promise.resolve(user.canEdit()).then(function(can){
+        if(!can) return;
+        var box=$('owner'), n24=$('n24'), n22=$('n22'), n18=$('n18'), st=$('ostatus'), save=$('saveRate'), touched={n22:false,n18:false};
+        box.hidden=false;
+        if(current){ n24.value=current.r24; n22.value=current.r22; n18.value=current.r18; }
+        n22.addEventListener('input',function(){touched.n22=true;});
+        n18.addEventListener('input',function(){touched.n18=true;});
+        n24.addEventListener('input',function(){
+          var v=parseFloat(n24.value)||0;
+          if(!touched.n22) n22.value=v?Math.round(v*0.916):'';
+          if(!touched.n18) n18.value=v?Math.round(v*0.75):'';
+        });
+        save.addEventListener('click',function(){
+          var r24=Math.round(parseFloat(n24.value)), r22=Math.round(parseFloat(n22.value)), r18=Math.round(parseFloat(n18.value));
+          if(!(r24>0&&r22>0&&r18>0)){ st.textContent='Enter all three rates as numbers above zero.'; return; }
+          var d={source:'owner',date:new Date().toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'}),r24:r24,r22:r22,r18:r18};
+          save.disabled=true; st.textContent='Saving...';
+          art.publish({'rates.json':JSON.stringify(d)}).then(function(){
+            apply(d); st.textContent='Saved. Everyone who opens the page now sees these rates.';
+          }).catch(function(err){
+            var c=err&&err.code;
+            st.textContent=(c==='conflict')?'The page was updated somewhere else and is reloading. Enter the rate again after it loads.'
+              :(c==='not_writer'||c==='not_granted'||c==='capability_disabled')?'Saving is not available in this view. Send the rate to Claude and it will be updated.'
+              :'The rate could not be saved. Try again in a moment.';
+          }).then(function(){ save.disabled=false; });
+        });
+      });
+    }).catch(function(){});
+  })();
+
+  /* 3D ring */
+  var host=document.getElementById('stage'), fb=document.getElementById('fallback');
+  if(!host || !window.THREE) return;
+  var renderer;
+  try{ renderer=new THREE.WebGLRenderer({antialias:true,alpha:true}); }catch(err){ return; }
+  fb.hidden=true;
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));
+  renderer.outputEncoding=THREE.sRGBEncoding;
+  renderer.toneMapping=THREE.ACESFilmicToneMapping; renderer.toneMappingExposure=1.15;
+  var cvs=renderer.domElement; cvs.setAttribute('role','img'); cvs.setAttribute('aria-label','Rotating 3D gold ring with a ruby. Drag to turn it.');
+  host.insertBefore(cvs,host.firstChild);
+
+  var scene=new THREE.Scene();
+  var camera=new THREE.PerspectiveCamera(32,1,.1,60); camera.position.set(0,.2,9.6);
+
+  /* studio reflections drawn on a canvas */
+  var ec=document.createElement('canvas'); ec.width=1024; ec.height=512; var g=ec.getContext('2d');
+  var gr=g.createLinearGradient(0,0,0,512); gr.addColorStop(0,'#fff0cc'); gr.addColorStop(.46,'#7a5521'); gr.addColorStop(.5,'#180d04'); gr.addColorStop(1,'#4a3414');
+  g.fillStyle=gr; g.fillRect(0,0,1024,512);
+  g.fillStyle='#ffffff';
+  [[110,80,170,70],[420,50,230,60],[770,90,150,80],[290,290,90,150],[880,270,80,140],[600,300,60,120]].forEach(function(b){ g.fillRect(b[0],b[1],b[2],b[3]); });
+  var tex=new THREE.CanvasTexture(ec); tex.mapping=THREE.EquirectangularReflectionMapping; tex.encoding=THREE.sRGBEncoding;
+  var pm=new THREE.PMREMGenerator(renderer); scene.environment=pm.fromEquirectangular(tex).texture; pm.dispose(); tex.dispose();
+
+  var gold=new THREE.MeshStandardMaterial({color:0xf0b93c,metalness:1,roughness:.16,envMapIntensity:1.3});
+  var ruby=new THREE.MeshPhysicalMaterial({color:0xb3122c,metalness:.2,roughness:.04,clearcoat:1,clearcoatRoughness:.03,envMapIntensity:1.9,flatShading:true});
+
+  var rig=new THREE.Group(); rig.position.y=-.3; scene.add(rig);
+  var ring=new THREE.Group(); ring.rotation.x=.38; rig.add(ring);
+  ring.add(new THREE.Mesh(new THREE.TorusGeometry(1.25,.24,48,160),gold));
+  var bowl=new THREE.Mesh(new THREE.CylinderGeometry(.5,.34,.3,32),gold); bowl.position.y=1.6; ring.add(bowl);
+  var gem=new THREE.Mesh(new THREE.CylinderGeometry(.3,.52,.26,8,1),ruby); gem.position.y=1.86; gem.rotation.y=Math.PI/8; ring.add(gem);
+  var pg=new THREE.CylinderGeometry(.04,.05,.36,12), tg=new THREE.SphereGeometry(.07,16,12);
+  for(var i=0;i<4;i++){ var a=Math.PI/4+i*Math.PI/2, px=Math.cos(a)*.5, pz=Math.sin(a)*.5;
+    var pr=new THREE.Mesh(pg,gold); pr.position.set(px,1.82,pz); ring.add(pr);
+    var tp=new THREE.Mesh(tg,gold); tp.position.set(px*.95,2.01,pz*.95); ring.add(tp); }
+
+  var orbit=new THREE.Group(); orbit.rotation.x=.95; orbit.rotation.z=-.25; rig.add(orbit);
+  var bg=new THREE.SphereGeometry(.07,20,16);
+  for(i=0;i<20;i++){ var b=new THREE.Mesh(bg,gold), t=i/20*Math.PI*2, s=(i%5===0)?1.7:1;
+    b.scale.setScalar(s); b.position.set(Math.cos(t)*2.7,0,Math.sin(t)*2.7); orbit.add(b); }
+
+  var ry=-.7, drag=false, lx=0, running=false, onscreen=true, last=0, raf=0;
+  var spin=reduce?0:.4;
+  function draw(){ rig.rotation.y=ry; renderer.render(scene,camera); }
+  function loop(now){
+    raf=0; if(!running) return;
+    var dt=Math.min(.05,(now-last)/1000); last=now;
+    if(!drag) ry+=spin*dt;
+    orbit.rotation.y-=dt*.22; draw();
+    if(!reduce||drag) raf=requestAnimationFrame(loop);
+  }
+  function start(){ if(running||!onscreen||document.hidden) return; running=true; last=performance.now(); if(!raf) raf=requestAnimationFrame(loop); }
+  function stop(){ running=false; if(raf){cancelAnimationFrame(raf); raf=0;} }
+  function size(){ var r=host.getBoundingClientRect(); if(!r.width||!r.height) return;
+    renderer.setSize(r.width,r.height,false); camera.aspect=r.width/r.height; camera.updateProjectionMatrix(); draw(); }
+  if('ResizeObserver' in window) new ResizeObserver(size).observe(host); else window.addEventListener('resize',size);
+  size();
+
+  cvs.addEventListener('pointerdown',function(e){ drag=true; lx=e.clientX; try{cvs.setPointerCapture(e.pointerId);}catch(x){} if(reduce){running=true;} start(); });
+  cvs.addEventListener('pointermove',function(e){ if(!drag) return; ry+=(e.clientX-lx)*.012; lx=e.clientX; if(reduce) draw(); });
+  function up(){ drag=false; }
+  cvs.addEventListener('pointerup',up); cvs.addEventListener('pointercancel',up);
+
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(en){ onscreen=en[0].isIntersecting; if(onscreen) start(); else stop(); }).observe(host);
+  }
+  document.addEventListener('visibilitychange',function(){ if(document.hidden) stop(); else start(); });
+  start();
+})();
+</script>
